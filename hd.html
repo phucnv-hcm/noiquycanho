@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nội Quy Căn Hộ</title>
+    <style>
+        /* Thiết lập cơ bản theo phong cách Booking.com */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f9fc;
+            color: #333;
+            padding: 15px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Header tối giản, chuyên nghiệp */
+        header {
+            background-color: #003580;
+            color: white;
+            text-align: center;
+            padding: 15px 15px;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .header-icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+        h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        /* Main content với bố cục sạch sẽ */
+        main {
+            max-width: 1200px;
+            flex: 1;
+            width: 100%;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #003580;
+            transition: box-shadow 0.3s ease;
+        }
+        section:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        h2 {
+            color: #003580;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #feba02;
+        }
+        /* Danh sách với icon */
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        li {
+            margin: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1em;
+            color: #444;
+        }
+        li:nth-child(1)::before { content: '⏰'; } /* Giờ giới nghiêm */
+        li:nth-child(2)::before { content: '🔒'; } /* An ninh cửa */
+        li:nth-child(3)::before { content: '🗝️'; } /* Chìa khóa/thẻ từ */
+        li:nth-child(4)::before { content: '🚨'; } /* Quy trình khẩn cấp */
+        li:nth-child(5)::before { content: '🌤️'; } /* An toàn ban công */
+        li:nth-child(6)::before { content: '🗑️'; } /* Xử lý rác thải */
+        li:nth-child(7)::before { content: '💧'; } /* Hệ thống nước */
+        li::before {
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #003580;
+        }
+        #guests li::before { content: '👥'; } /* Khách & người thăm */
+        #prohibited li:nth-child(1)::before { content: '⚖️'; } /* Hoạt động bất hợp pháp */
+        #prohibited li:nth-child(2)::before { content: '🚭'; } /* Hút thuốc */
+        #prohibited li:nth-child(3)::before { content: '💥'; } /* Vật liệu nguy hiểm */
+        #prohibited li:nth-child(4)::before { content: '🤫'; } /* Gây phiền toái */
+        #checkout li:nth-child(1)::before { content: '🚬'; } /* Hút thuốc trong phòng */
+        #checkout li:nth-child(2)::before { content: '🗑️'; } /* Không đổ rác */
+        #checkout li:nth-child(3)::before { content: '🛏️'; } /* Làm hư ga gối */
+        #checkout li:nth-child(4)::before { content: '📺'; } /* Làm mất remote */
+        #checkout li:nth-child(5)::before { content: '🗝️'; } /* Làm mất thẻ từ */
+        #checkout li:nth-child(6)::before { content: '🔥'; } /* Hư hại báo cháy */
+        strong {
+            color: #d0021b;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        p {
+            font-size: 1em;
+            margin: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #444;
+        }
+        p::before {
+            content: 'ℹ️';
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #003580;
+        }
+        /* Footer nổi bật với hiệu ứng 3D và icon điện thoại nổi bật */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003580;
+            color: #ffffff;
+            border-radius: 12px;
+            margin-top: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: perspective(600px) translateZ(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 1200px;
+        }
+        footer:hover {
+            transform: perspective(600px) translateZ(20px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        footer p {
+            font-size: 1em;
+            padding-left: 0;
+            color: #ffffff;
+        }
+        .footer-icon {
+            font-size: 1.2em;
+            margin: 0 5px;
+            color: #ffffff;
+        }
+        .footer-icon.phone {
+            font-size: 1.5em;
+            color: #feba02;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .footer-icon.phone:hover {
+            transform: scale(1.2);
+            color: #ffd700;
+        }
+        /* Nút cuộn lên đầu */
+        .scroll-top {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: #003580;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: none;
+        }
+        .scroll-top:hover {
+            background-color: #00224f;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .scroll-top.show {
+            display: block;
+        }
+        /* Tối ưu cho điện thoại */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            header {
+                padding: 10px 10px;
+                margin-bottom: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .header-icon {
+                font-size: 1.8em;
+            }
+            section {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            h2 {
+                font-size: 1.3em;
+                padding-bottom: 5px;
+            }
+            li, p {
+                font-size: 0.95em;
+                padding-left: 30px;
+            }
+            li::before, p::before {
+                font-size: 1.2em;
+            }
+            footer {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            footer p {
+                font-size: 0.9em;
+                color: #ffffff;
+            }
+            .footer-icon {
+                font-size: 1.1em;
+                color: #ffffff;
+            }
+            .footer-icon.phone {
+                font-size: 1.3em;
+                color: #feba02;
+            }
+            .scroll-top {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3em;
+            }
+            .header-icon {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            li, p {
+                font-size: 0.9em;
+                padding-left: 25px;
+            }
+            li::before, p::before {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 12px;
+            }
+            footer {
+                padding: 12px;
+            }
+            footer p {
+                font-size: 0.8em;
+                color: #ffffff;
+            }
+            .footer-icon {
+                font-size: 1em;
+                color: #ffffff;
+            }
+            .footer-icon.phone {
+                font-size: 1.2em;
+                color: #feba02;
+            }
+            .scroll-top {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-icon">🏢</div>
+        <h1>Nội Quy Căn Hộ</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Nội Quy Chung</h2>
+            <ul>
+                <li><strong>Giờ Giới Nghiêm Tiếng Ồn:</strong> Giữ im lặng từ 22:00 (10 giờ tối) đến 7:00 sáng hàng ngày. Trong khoảng thời gian này, giữ mức độ tiếng ồn (bao gồm âm nhạc, TV, trò chuyện và các hoạt động ồn ào khác) ở mức tối thiểu.</li>
+                <li><strong>An Ninh Cửa & Cửa Sổ:</strong> Luôn khóa cửa căn hộ và đảm bảo cửa sổ đóng chặt khi bạn rời đi. Không được chèn hoặc giữ cửa ra vào chung mở.</li>
+                <li><strong>Kiểm Soát Chìa Khóa/Thẻ Từ:</strong> Không được sao chép chìa khóa hoặc thẻ từ.</li>
+                <li><strong>Quy Trình Khẩn Cấp:</strong> Nắm rõ các lối thoát hiểm, vị trí báo cháy và quy trình sơ tán. Không được phá hoại thiết bị phòng cháy chữa cháy.</li>
+                <li><strong>An Toàn Ban Công:</strong> Không được ném hoặc làm rơi bất cứ vật gì từ ban công. Không sử dụng ban công để lưu trữ các vật liệu dễ cháy.</li>
+                <li><strong>Xử Lý Rác Thải:</strong> Vứt rác đúng nơi quy định. Tuân thủ hướng dẫn tái chế của tòa nhà. Không để túi rác ở hành lang.</li>
+                <li><strong>Hệ Thống Nước:</strong> Không xả bất cứ thứ gì khác ngoài giấy vệ sinh xuống bồn cầu. Tránh đổ dầu mỡ hoặc dầu ăn xuống cống.</li>
+            </ul>
+        </section>
+        <section id="prohibited">
+            <h2>Các Hoạt Động Bị Cấm</h2>
+            <ul>
+                <li><strong>Hoạt Động Bất Hợp Pháp:</strong> Không được phép thực hiện bất kỳ hoạt động bất hợp pháp nào trong căn hộ.</li>
+                <li><strong>Hút Thuốc:</strong> Cấm hút thuốc ở tất cả các khu vực chung và có thể bị cấm trong từng căn hộ.</li>
+                <li><strong>Vật Liệu Nguy Hiểm:</strong> Không được lưu trữ các vật liệu dễ cháy, nổ hoặc các vật liệu nguy hiểm khác trong căn hộ hoặc trong khuôn viên.</li>
+                <li><strong>Gây Phiền Toái:</strong> Tránh mọi hoạt động gây phiền toái, khó chịu hoặc làm phiền các cư dân khác.</li>
+            </ul>
+        </section>
+        <section id="checkout">
+            <h2>Quy Trình Trả Phòng</h2>
+            <p>Bạn hãy thông báo cho chúng tôi giờ bạn trả phòng, lưu ý giờ trả phòng trước 12:00 sáng.</p>
+            <p>Sau đây là số tiền mà bạn sẽ bị phạt nếu xảy ra trong thời gian trả phòng:</p>
+            <ul>
+                <li>Hút thuốc trong phòng: <strong>300.000 VND</strong></li>
+                <li>Không đổ rác ở nơi phòng rác của tòa nhà, để rác nhiều trong căn hộ: <strong>100.000 VND</strong></li>
+                <li>Làm hư ga gối: <strong>500.000 VND/bộ</strong></li>
+                <li>Làm mất remote máy lạnh, TV: <strong>500.000 VND/cái</strong></li>
+                <li>Làm mất thẻ từ: <strong>200.000 VND/cái</strong></li>
+                <li>Làm hư hại hệ thống báo cháy tòa nhà: Nộp theo mức xử lý của tòa nhà</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p><span class="footer-icon phone">📞</span> Liên hệ: [Số điện thoại/Zalo của bạn] | <span class="footer-icon">📅</span> Cập nhật: 09/06/2025</p>
+    </footer>
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆</button>
+    <script>
+        window.onscroll = function() {
+            let btn = document.querySelector('.scroll-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        };
+    </script>
+</body>
+</html>
