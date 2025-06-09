@@ -127,7 +127,7 @@
             line-height: 1.6;
             color: #003580;
         }
-        /* Footer nổi bật với hiệu ứng 3D */
+        /* Footer nổi bật với hiệu ứng 3D và icon điện thoại nổi bật */
         footer {
             text-align: center;
             padding: 20px;
@@ -148,10 +148,22 @@
         footer p {
             font-size: 1em;
             padding-left: 0;
+            color: #ffffff;
         }
         .footer-icon {
             font-size: 1.2em;
             margin: 0 5px;
+            color: #ffffff;
+        }
+        .footer-icon.phone {
+            font-size: 1.5em;
+            color: #feba02;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .footer-icon.phone:hover {
+            transform: scale(1.2);
+            color: #ffd700;
         }
         /* Nút cuộn lên đầu */
         .scroll-top {
@@ -213,9 +225,15 @@
             }
             footer p {
                 font-size: 0.9em;
+                color: #ffffff;
             }
             .footer-icon {
                 font-size: 1.1em;
+                color: #ffffff;
+            }
+            .footer-icon.phone {
+                font-size: 1.3em;
+                color: #feba02;
             }
             .scroll-top {
                 width: 35px;
@@ -250,9 +268,15 @@
             }
             footer p {
                 font-size: 0.8em;
+                color: #ffffff;
             }
             .footer-icon {
                 font-size: 1em;
+                color: #ffffff;
+            }
+            .footer-icon.phone {
+                font-size: 1.2em;
+                color: #feba02;
             }
             .scroll-top {
                 width: 30px;
@@ -310,7 +334,7 @@
         </section>
     </main>
     <footer>
-        <p><span class="footer-icon">📞</span> Liên hệ: [0934.956.358 (TRANG)/ 0796.719.039 (PHUC)]</p>
+        <div><span class="footer-icon phone">📞</span> Liên hệ: 0934.956.358 (TRANG) / 0796.719.039 (PHUC)</div>
     </footer>
     <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆</button>
     <script>
